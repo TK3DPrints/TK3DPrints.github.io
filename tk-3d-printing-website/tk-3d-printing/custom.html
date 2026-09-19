@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Custom 3D Printing & Design</title>
+  <meta name="description" content="">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; form-action 'self'; base-uri 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="theme-color" content="#111c27">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:wght@400..700&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="site-header"></div>
+  <noscript><p class="noscript">This website needs JavaScript turned on to show products and forms.</p></noscript>
+  <main id="main">
+    <section class="page-head plate">
+      <div class="wrap">
+        <h1>Custom 3D printing and design</h1>
+        <p class="lead">Have an idea, a broken part, or a sketch on a napkin? Tell us about it. We’ll review your request and reply by email with a quote.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h2>How it works</h2>
+        <ol class="process" id="process"></ol>
+      </div>
+    </section>
+
+    <section class="section section-tint">
+      <div class="wrap narrow">
+        <h2>Request a quote</h2>
+        <p class="notice"><strong>Submitting this form does not guarantee a price.</strong> We will review your request and contact you with a quote.</p>
+
+        <form id="quote-form" class="stack-form" novalidate aria-label="Custom quote request">
+          <fieldset class="group">
+            <legend>About you</legend>
+            <div class="grid-2">
+              <div class="field"><label for="q-name">Name</label>
+                <input id="q-name" name="name" type="text" required maxlength="100" autocomplete="name" data-label="name"></div>
+              <div class="field"><label for="q-email">Email</label>
+                <input id="q-email" name="email" type="email" required maxlength="160" autocomplete="email" inputmode="email" data-label="email"></div>
+            </div>
+          </fieldset>
+
+          <fieldset class="group">
+            <legend>What you need</legend>
+            <div class="field"><label for="q-title">What would you like made?</label>
+              <input id="q-title" name="title" type="text" required maxlength="120" placeholder="Example: replacement knob for a dryer" data-error="Please tell us what you would like made."></div>
+            <div class="field"><label for="q-desc">Description</label>
+              <textarea id="q-desc" name="description" rows="5" required minlength="20" maxlength="3000" data-label="description"></textarea>
+              <p class="hint">What is it for? How will it be used? Anything it has to fit or attach to?</p></div>
+          </fieldset>
+
+          <fieldset class="group">
+            <legend>Size and quantity</legend>
+            <div class="grid-4">
+              <div class="field"><label for="q-length">Length</label><input id="q-length" name="length" type="number" inputmode="decimal" min="0.01" max="10000" step="any" data-label="length"></div>
+              <div class="field"><label for="q-width">Width</label><input id="q-width" name="width" type="number" inputmode="decimal" min="0.01" max="10000" step="any" data-label="width"></div>
+              <div class="field"><label for="q-height">Height</label><input id="q-height" name="height" type="number" inputmode="decimal" min="0.01" max="10000" step="any" data-label="height"></div>
+              <div class="field"><label for="q-units">Units</label>
+                <select id="q-units" name="units"><option value="inches">inches</option><option value="mm">mm</option></select></div>
+            </div>
+            <div class="grid-2">
+              <div class="field"><label for="q-qty">Quantity</label>
+                <input id="q-qty" name="quantity" type="number" inputmode="numeric" min="1" max="10000" step="1" value="1" required data-label="quantity"></div>
+            </div>
+          </fieldset>
+
+          <fieldset class="group">
+            <legend>Color and material</legend>
+            <div class="grid-2">
+              <div class="field"><label for="q-color">Preferred color</label>
+                <input id="q-color" name="color" type="text" maxlength="60" list="color-suggestions" autocomplete="off" data-label="color">
+                <datalist id="color-suggestions"></datalist></div>
+              <div class="field"><label for="q-material">Preferred material</label>
+                <select id="q-material" name="material"></select></div>
+            </div>
+          </fieldset>
+
+          <fieldset class="group">
+            <legend>Reference files</legend>
+            <div class="field">
+              <label for="q-photos">Photos and sketches</label>
+              <input id="q-photos" name="photos" type="file" multiple accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp">
+              <p class="hint">JPG, PNG or WebP.</p>
+              <ul class="file-list" id="photo-list"></ul>
+            </div>
+            <div class="field">
+              <label for="q-models">3D files (if you have them)</label>
+              <input id="q-models" name="models" type="file" multiple accept=".stl,.3mf,.obj">
+              <p class="hint">STL, 3MF or OBJ. Up to <span id="limits-text"></span>.</p>
+              <ul class="file-list" id="model-list"></ul>
+            </div>
+          </fieldset>
+
+          <div class="group"><div class="field"><label for="q-notes">Additional notes (optional)</label>
+            <textarea id="q-notes" name="notes" rows="3" maxlength="2000" data-label="notes"></textarea>
+            <p class="hint">Deadline, budget, where it will be used, anything else we should know.</p></div></div>
+
+          <div class="hp" aria-hidden="true"><label for="q-website">Leave this empty</label>
+            <input id="q-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+
+          <button class="btn btn-block" type="submit">Send quote request</button>
+          <p class="hint">We only use your details to reply to this request. Files are sent to us by email and are not published anywhere.</p>
+          <div class="form-status" role="status" hidden></div>
+        </form>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="data/business.js"></script>
+  <script src="data/content.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/forms.js"></script>
+  <script src="js/custom.js"></script>
+</body>
+</html>

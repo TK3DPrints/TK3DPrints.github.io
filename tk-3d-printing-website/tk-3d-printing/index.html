@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ready-Made and Custom 3D Prints</title>
+  <meta name="description" content="">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; form-action 'self'; base-uri 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="theme-color" content="#111c27">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:wght@400..700&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="site-header"></div>
+  <noscript><p class="noscript">This website needs JavaScript turned on to show products and forms.</p></noscript>
+  <main id="main">
+    <section class="hero plate">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <h1 data-bind="content.home.heroTitle"></h1>
+          <p class="lead" data-bind="content.home.heroText"></p>
+          <div class="btn-row">
+            <a class="btn" href="shop.html" data-bind="content.home.heroPrimaryButton"></a>
+            <a class="btn btn-ghost" href="custom.html#quote-form" data-bind="content.home.heroSecondaryButton"></a>
+          </div>
+        </div>
+        <div class="hero-visual" id="hero-visual"></div>
+      </div>
+    </section>
+
+    <section class="strip">
+      <div class="wrap"><ul class="highlights" id="highlights"></ul></div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 data-bind="content.home.featuredTitle"></h2>
+          <a class="text-link" href="shop.html" data-bind="content.home.featuredLink"></a>
+        </div>
+        <div class="product-grid product-grid-four" id="featured-grid"></div>
+      </div>
+    </section>
+
+    <section class="custom-band">
+      <div class="wrap custom-band-inner">
+        <div>
+          <h2 data-bind="content.home.customTitle"></h2>
+          <p class="lead" data-bind="content.home.customText"></p>
+          <a class="btn btn-signal" href="custom.html#quote-form" data-bind="content.home.customButton"></a>
+        </div>
+        <ul class="file-types" aria-label="What you can send us">
+          <li>A written description</li>
+          <li>Photos or sketches</li>
+          <li>STL, 3MF or OBJ files</li>
+          <li>Measurements and quantity</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section cta">
+      <div class="wrap cta-inner">
+        <div>
+          <h2 data-bind="content.home.ctaTitle"></h2>
+          <p data-bind="content.home.ctaText"></p>
+        </div>
+        <a class="btn btn-ghost" href="contact.html" data-bind="content.home.ctaButton"></a>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="data/business.js"></script>
+  <script src="data/content.js"></script>
+  <script src="data/products.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>
