@@ -14,7 +14,7 @@ const CONTENT = {
 
     // Three short points under the hero
     highlights: [
-      { title: "Designed in-house",  text: "Every ready-made product is our own design, tested before it's listed." },
+      { title: "Quality-checked",  text: "Each item is inspected before it ships, so you get a clean print every time." },
       { title: "Printed to order",   text: "Your item is printed after you order, in the color you choose." },
       { title: "Pickup or shipping", text: "Pick up locally for free or have it shipped to your door." }
     ],
@@ -87,9 +87,5 @@ const CONTENT = {
       question: "What is your return policy?",
       answer: "If your item arrives damaged or isn't what you ordered, contact us within 7 days and we'll reprint or refund it. Custom-designed items are made specifically for you, so they can't be returned unless there's a defect."
     },
-    {
-      question: "Who owns the design and the files?",
-      answer: "For custom work, you own the design we create for you and can request the files. Ready-made products remain our designs; you're welcome to use what you buy but not to resell copies. Only upload files you have the right to have printed."
-    }
   ]
 };
