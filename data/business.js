@@ -16,23 +16,19 @@ const BUSINESS = {
   email: "tk3dprintsstore@gmail.com",  // Shown on the site and used for "Email us" links.
                                  // (Form messages are delivered by the Google Apps Script — see README.)
   phone: "",                     // Leave as "" to hide the phone number everywhere
-  location: "Your City, State",  // Example: "Fort Wayne, Indiana"
+  location: "",  // Example: "Fort Wayne, Indiana"
   serviceArea: "Local pickup available. We ship anywhere in the US.",
 
   // ---- Business hours ---------------------------------------------------
   // Add or remove lines. Leave the list empty ( hours: [] ) to hide hours.
-  hours: [
-    { days: "Monday – Friday", time: "5 pm – 9 pm" },
-    { days: "Saturday",        time: "10 am – 4 pm" },
-    { days: "Sunday",          time: "Closed" }
-  ],
+  hours: [],
   hoursNote: "Messages are answered within 1–2 business days.",
 
   // ---- Social media -----------------------------------------------------
   // Leave a url as "" and that link is hidden.
   social: [
     { name: "Instagram", url: "" },
-    { name: "Facebook",  url: "" },
+    { name: "Facebook",  url: "https://www.facebook.com/share/1QGEnC22Ng/?mibextid=wwXIfr" },
     { name: "TikTok",    url: "" },
     { name: "YouTube",   url: "" }
   ],
