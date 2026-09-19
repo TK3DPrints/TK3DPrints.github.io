@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shop</title>
+  <meta name="description" content="">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; form-action 'self'; base-uri 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="theme-color" content="#111c27">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:wght@400..700&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="site-header"></div>
+  <noscript><p class="noscript">This website needs JavaScript turned on to show products and forms.</p></noscript>
+  <main id="main">
+    <section class="page-head plate">
+      <div class="wrap">
+        <h1>Shop ready-made prints</h1>
+        <p class="lead">Fixed prices, printed to order in the color you choose. Pick one to place an order request.</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="wrap">
+        <div class="toolbar" id="toolbar">
+          <div class="pills" id="filters" role="group" aria-label="Filter by category"></div>
+          <div class="search">
+            <label for="search" class="visually-hidden">Search products</label>
+            <input id="search" type="search" placeholder="Search products" autocomplete="off" maxlength="60">
+          </div>
+        </div>
+        <p id="result-count" class="result-count" aria-live="polite"></p>
+        <div class="product-grid" id="product-grid"></div>
+        <div id="empty" class="empty" hidden></div>
+        <p class="side-note">Don’t see what you need? <a href="custom.html#quote-form">Request a custom print</a>.</p>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="data/business.js"></script>
+  <script src="data/content.js"></script>
+  <script src="data/products.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/shop.js"></script>
+</body>
+</html>

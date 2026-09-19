@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About</title>
+  <meta name="description" content="">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; form-action 'self'; base-uri 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="theme-color" content="#111c27">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:wght@400..700&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="site-header"></div>
+  <noscript><p class="noscript">This website needs JavaScript turned on to show products and forms.</p></noscript>
+  <main id="main">
+    <section class="page-head plate">
+      <div class="wrap"><h1 data-bind="content.about.title"></h1></div>
+    </section>
+    <section class="section">
+      <div class="wrap narrow prose">
+        <div data-list="content.about.paragraphs"></div>
+        <div class="two-services">
+          <div class="card pad"><h2>Ready-made</h2><p>Browse products we’ve designed, choose a color, and order. Fixed prices, no surprises.</p><a class="btn btn-ghost" href="shop.html">Shop ready-made</a></div>
+          <div class="card pad"><h2>Custom</h2><p>Describe what you need. We design it if necessary, quote it, and print it.</p><a class="btn btn-ghost" href="custom.html#quote-form">Request a quote</a></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="data/business.js"></script>
+  <script src="data/content.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

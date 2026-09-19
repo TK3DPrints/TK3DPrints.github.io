@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact</title>
+  <meta name="description" content="">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; form-action 'self'; base-uri 'self'; object-src 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="theme-color" content="#111c27">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:wght@400..700&display=swap">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="site-header"></div>
+  <noscript><p class="noscript">This website needs JavaScript turned on to show products and forms.</p></noscript>
+  <main id="main">
+    <section class="page-head plate">
+      <div class="wrap"><h1>Contact us</h1>
+      <p class="lead" data-bind="business.hoursNote"></p></div>
+    </section>
+    <section class="section">
+      <div class="wrap contact-grid">
+        <div class="contact-info">
+          <div class="contact-block"><h2>Email</h2><p><a data-mailto></a></p></div>
+          <div class="contact-block" data-phone><h2>Phone</h2><p><a></a></p></div>
+          <div class="contact-block"><h2>Location</h2><p data-bind="business.location"></p><p data-bind="business.serviceArea"></p></div>
+          <div class="contact-block"><h2>Hours</h2><dl class="hours dark-text" id="hours-list"></dl></div>
+          <div class="contact-block"><h2>Follow along</h2><ul class="plain-links" id="social-links"></ul></div>
+          <p class="side-note">Want something custom made? Use the <a href="custom.html#quote-form">custom quote form</a> so you can attach photos and files.</p>
+        </div>
+        <form id="contact-form" class="stack-form" novalidate aria-label="Contact form">
+          <div class="field"><label for="c-name">Name</label><input id="c-name" name="name" type="text" required maxlength="100" autocomplete="name" data-label="name"></div>
+          <div class="field"><label for="c-email">Email</label><input id="c-email" name="email" type="email" required maxlength="160" autocomplete="email" inputmode="email" data-label="email"></div>
+          <div class="field"><label for="c-message">Message</label><textarea id="c-message" name="message" rows="6" required minlength="5" maxlength="3000" data-label="message"></textarea></div>
+          <div class="hp" aria-hidden="true"><label for="c-website">Leave this empty</label><input id="c-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+          <button class="btn btn-block" type="submit">Send message</button>
+          <div class="form-status" role="status" hidden></div>
+        </form>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="data/business.js"></script>
+  <script src="data/content.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/forms.js"></script>
+  <script src="js/contact.js"></script>
+</body>
+</html>
