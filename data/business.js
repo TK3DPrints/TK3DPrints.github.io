@@ -7,10 +7,10 @@
 const BUSINESS = {
 
   // ---- The basics -------------------------------------------------------
-  name: "TK 3D Printing",                       // Shows in the header, footer and browser tab
+  name: "TK 3D Prints",                       // Shows in the header, footer and browser tab
   tagline: "Ready-made and custom 3D prints",   // Short line used in the footer
   description:
-    "TK 3D Printing designs and prints useful, good-looking things — from ready-made gear you can order today to one-off custom parts made from your idea.",
+    "TK 3D Prints designs and prints useful, good-looking things — from ready-made gear you can order today to one-off custom parts made from your idea.",
 
   // ---- Contact info -----------------------------------------------------
   email: "tk3dprintsstore@gmail.com",  // Shown on the site and used for "Email us" links.
