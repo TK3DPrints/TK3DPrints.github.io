@@ -44,7 +44,7 @@ const CONTENT = {
   about: {
     title: "A small workshop that makes useful things.",
     paragraphs: [
-      "We are a small 3D-printing business. We do two things: sell ready-made products we've designed ourselves, and make custom parts and designs for people who need something specific.",
+      "We are a small 3D-printing business. We do two things: sell ready-made products, and make custom parts and designs for people who need something specific.",
       "Ready-made products are listed in the shop with a fixed price. Pick a color, place your order, and we print it for you.",
       "Custom work starts with a conversation. Describe what you need, and we'll tell you what's possible, what it would cost, and how long it would take. We can also do the design work if you don't have a 3D file.",
       "Every order is printed, checked and packed by hand."
