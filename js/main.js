@@ -90,37 +90,49 @@ function productCard(p) {
   const colors = colorsOf(p);
   const url = 'product.html?id=' + encodeURIComponent(p.id);
 
-  // Build gallery thumbnails (main image + extraImages)
+  // All images (main + extras)
   const galleryImages = [p.image, ...(p.extraImages || [])];
+  let currentIndex = 0;
 
+  // Main image element
+  const mainImg = productImage(p);
+
+  // Update main image when arrows are clicked
+  const showImage = (index) => {
+    currentIndex = (index + galleryImages.length) % galleryImages.length;
+    mainImg.src = galleryImages[currentIndex];
+  };
+
+  // Thumbnail gallery
   const gallery = h('div', { class: 'card-gallery' },
-    galleryImages.map(src =>
+    galleryImages.map((src, i) =>
       h('img', {
         src,
         alt: p.name,
         class: 'thumb',
         loading: 'lazy',
-        decoding: 'async'
+        decoding: 'async',
+        onclick: () => showImage(i)
       })
     )
   );
 
-  // Arrow wrapper
+  // Arrow controls
   const galleryWrapper = h('div', { class: 'card-gallery-wrapper' },
     h('button', {
       class: 'arrow left',
-      onclick: () => gallery.scrollBy({ left: -120, behavior: 'smooth' })
+      onclick: () => showImage(currentIndex - 1)
     }, '‹'),
     gallery,
     h('button', {
       class: 'arrow right',
-      onclick: () => gallery.scrollBy({ left: 120, behavior: 'smooth' })
+      onclick: () => showImage(currentIndex + 1)
     }, '›')
   );
 
   return h('article', { class: 'card product-card' },
     h('a', { class: 'card-media', href: url, tabindex: '-1', 'aria-hidden': 'true' },
-      productImage(p)
+      mainImg
     ),
     galleryWrapper,
     h('div', { class: 'card-body' },
@@ -143,6 +155,7 @@ function productCard(p) {
     )
   );
 }
+
 
 
   function renderProcess(listEl) {
