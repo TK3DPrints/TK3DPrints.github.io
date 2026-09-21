@@ -101,11 +101,48 @@ function productCard(p) {
         class: 'thumb',
         loading: 'lazy',
         decoding: 'async'
-   const galleryWrapper = h('div', { class: 'card-gallery-wrapper' },
-  h('button', { class: 'arrow left', onclick: () => gallery.scrollBy({ left: -120, behavior: 'smooth' }) }, '‹'),
-  gallery,
-  h('button', { class: 'arrow right', onclick: () => gallery.scrollBy({ left: 120, behavior: 'smooth' }) }, '›')
-);
+      })
+    )
+  );
+
+  // Arrow wrapper
+  const galleryWrapper = h('div', { class: 'card-gallery-wrapper' },
+    h('button', {
+      class: 'arrow left',
+      onclick: () => gallery.scrollBy({ left: -120, behavior: 'smooth' })
+    }, '‹'),
+    gallery,
+    h('button', {
+      class: 'arrow right',
+      onclick: () => gallery.scrollBy({ left: 120, behavior: 'smooth' })
+    }, '›')
+  );
+
+  return h('article', { class: 'card product-card' },
+    h('a', { class: 'card-media', href: url, tabindex: '-1', 'aria-hidden': 'true' },
+      productImage(p)
+    ),
+    galleryWrapper,   // ⭐ now correct
+    h('div', { class: 'card-body' },
+      p.category ? h('p', { class: 'tag', text: p.category }) : null,
+      h('h3', { class: 'card-title' }, h('a', { href: url, text: p.name })),
+      h('p', { class: 'price', text: money(p.price) }),
+      h('p', { class: 'card-text', text: p.description || '' }),
+      colors.length
+        ? h('ul', {
+            class: 'swatch-row',
+            'aria-label': 'Available colors: ' + colors.join(', ')
+          }, colors.map(c => h('li', { title: c }, swatch(c))))
+        : null,
+      h('a', {
+        class: 'btn btn-block',
+        href: url,
+        'aria-label': 'Order ' + p.name,
+        text: 'Order'
+      })
+    )
+  );
+}
 
 
   return h('article', { class: 'card product-card' },
