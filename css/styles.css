@@ -311,6 +311,9 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
   scroll-snap-align: start; /* optional for snapping */
 }
 
+.card-gallery {
+  max-width: 180px;   /* 👈 forces overflow so arrows can scroll */
+}
 
 
 /* ---------- Footer ---------- */
