@@ -1,409 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>TK 3D Prints – Shop</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    :root {
-      --bg: #0b1020;
-      --card-bg: #141a33;
-      --accent: #4fd1c5;
-      --accent-soft: rgba(79, 209, 197, 0.15);
-      --text-main: #f7fafc;
-      --text-muted: #a0aec0;
-      --border-soft: #2d3748;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #1a202c 0, #0b1020 55%, #05060b 100%);
-      color: var(--text-main);
-    }
-    .page {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 32px 16px 48px;
-    }
-    header { margin-bottom: 24px; }
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-      letter-spacing: 0.04em;
-    }
-    header p {
-      margin: 8px 0 0;
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-    .filters {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin: 24px 0 16px;
-      align-items: center;
-    }
-    .filters-left {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .filters-right {
-      margin-left: auto;
-      display: flex;
-      align-items: center;
-    }
-    .filter-btn {
-      border: 1px solid var(--border-soft);
-      background: rgba(15, 23, 42, 0.9);
-      color: var(--text-muted);
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.15s ease;
-    }
-    .filter-btn.active {
-      border-color: var(--accent);
-      background: var(--accent-soft);
-      color: var(--accent);
-    }
-    .filter-btn:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-    .search-input {
-      padding: 6px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--border-soft);
-      background: rgba(15, 23, 42, 0.9);
-      color: var(--text-main);
-      font-size: 0.85rem;
-      min-width: 200px;
-    }
-    .search-input::placeholder { color: var(--text-muted); }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-      margin-top: 8px;
-    }
-    .card {
-      background: rgba(15, 23, 42, 0.95);
-      border-radius: 12px;
-      border: 1px solid var(--border-soft);
-      padding: 12px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
-    }
-    .card-img {
-      position: relative;
-      border-radius: 10px;
-      overflow: hidden;
-      border: 1px solid #2d3748;
-      background: #0f172a;
-      min-height: 150px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .card-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .thumbs {
-      display: flex;
-      gap: 6px;
-      margin-top: 6px;
-    }
-    .thumbs img {
-      width: 48px;
-      height: 48px;
-      object-fit: cover;
-      border-radius: 6px;
-      border: 1px solid #2d3748;
-      cursor: pointer;
-      opacity: 0.7;
-      transition: opacity 0.15s ease, border-color 0.15s ease;
-    }
-    .thumbs img.active {
-      opacity: 1;
-      border-color: var(--accent);
-    }
-    .card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 8px;
-    }
-    .card-title {
-      font-size: 1rem;
-      font-weight: 600;
-    }
-    .card-price {
-      font-size: 0.95rem;
-      color: var(--accent);
-      font-weight: 600;
-    }
-    .card-meta {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-    .pill {
-      padding: 2px 8px;
-      border-radius: 999px;
-      border: 1px solid var(--border-soft);
-      background: rgba(15, 23, 42, 0.9);
-    }
-    .card-desc {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      line-height: 1.4;
-    }
-    .card-footer {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      margin-top: 4px;
-    }
-    .order-btn {
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: none;
-      background: var(--accent);
-      color: #0b1020;
-      font-size: 0.85rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      transition: background 0.15s ease, transform 0.1s ease;
-    }
-    .order-btn:hover {
-      background: #38b2ac;
-      transform: translateY(-1px);
-    }
-    .empty {
-      margin-top: 24px;
-      padding: 12px 14px;
-      border-radius: 10px;
-      border: 1px dashed var(--border-soft);
-      background: rgba(15, 23, 42, 0.7);
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-    .empty a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-    .empty a:hover { text-decoration: underline; }
-    @media (max-width: 640px) {
-      .filters {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .filters-right {
-        margin-left: 0;
-        width: 100%;
-      }
-      .search-input { width: 100%; }
-    }
-  </style>
-</head>
-<body>
-  <div class="page">
-    <header>
-      <h1>Shop</h1>
-      <p>Browse ready‑to‑print parts, or request a custom design for your project.</p>
-    </header>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TK 3D Prints - Shop</title>
 
-    <section class="filters">
-      <div class="filters-left">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="ford">Ford</button>
-      </div>
-      <div class="filters-right">
-        <input
-          type="search"
-          class="search-input"
-          id="search"
-          placeholder="Search products…"
-        />
-      </div>
-    </section>
+<style>
+:root {
+  --bg: #0b1020;
+  --card-bg: #141a33;
+  --accent: #4fd1c5;
+  --accent-soft: rgba(79,209,197,.15);
+  --text-main: #f7fafc;
+  --text-muted: #a0aec0;
+  --border-soft: #2d3748;
+}
 
-    <section id="grid" class="grid"></section>
+* {
+  box-sizing: border-box;
+}
 
-    <div id="empty" class="empty" style="display:none;">
-      Don’t see what you need? <a href="/quote.html">Request a custom print.</a>
-    </div>
-  </div>
+body {
+  margin: 0;
+  font-family: Segoe UI, sans-serif;
+  background: radial-gradient(circle at top,#1a202c 0,#0b1020 55%,#05060b 100%);
+  color: var(--text-main);
+}
 
-  <script>
-    const CATEGORIES = [
-      { id: "ford", name: "Ford" }
-    ];
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
 
-    const PRODUCTS = [
-      {
-        id: "ford-radio-mount",
-        name: "Under‑Dash Single DIN Radio Mount",
-        price: 45.00,
-        category: "ford",
-        description:
-          "A custom under‑dash mount designed to fit a standard single‑DIN radio in classic Ford interiors. Bracket geometry is based on dash spacing for a clean, secure install without cutting the original panel.",
-        images: [
-          "img/ford-radio-mount/radio-mount-1.png",
-          "img/ford-radio-mount/radio-mount-2.png",
-          "img/ford-radio-mount/radio-mount-3.jpeg"
-        ],
-        colors: [],
-        options: []
-      }
-    ];
+header {
+  margin-bottom: 24px;
+}
 
-    const gridEl = document.getElementById("grid");
-    const emptyEl = document.getElementById("empty");
-    const searchEl = document.getElementById("search");
-    const filterButtons = Array.from(document.querySelectorAll(".filter-btn"));
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
 
-    let activeFilter = "all";
-    let searchQuery = "";
+header p {
+  margin-top: 8px;
+  color: var(--text-muted);
+}
 
-    function formatPrice(p) {
-      return "$" + p.toFixed(2);
-    }
+.filters {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
 
-    function renderProducts() {
-      gridEl.innerHTML = "";
+.filters-left {
+  display: flex;
+  gap: 8px;
+}
 
-      const filtered = PRODUCTS.filter(p => {
-        const matchesCategory =
-          activeFilter === "all" ? true : p.category === activeFilter;
-        const q = searchQuery.trim().toLowerCase();
-        const matchesSearch =
-          !q ||
-          p.name.toLowerCase().includes(q) ||
-          p.description.toLowerCase().includes(q);
-        return matchesCategory && matchesSearch;
-      });
+.filter-btn {
+  background: rgba(15,23,42,.9);
+  color: var(--text-muted);
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  padding: 7px 14px;
+  cursor: pointer;
+}
 
-      if (filtered.length === 0) {
-        emptyEl.style.display = "block";
-        return;
-      } else {
-        emptyEl.style.display = "none";
-      }
+.filter-btn.active {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
 
-      filtered.forEach(product => {
-        const card = document.createElement("article");
-        card.className = "card";
+.search-input {
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  background: rgba(15,23,42,.9);
+  color: white;
+}
 
-        const imgWrapper = document.createElement("div");
-        imgWrapper.className = "card-img";
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+  gap: 20px;
+}
 
-        const mainImg = document.createElement("img");
-        mainImg.src = product.images[0];
-        mainImg.alt = product.name;
-        imgWrapper.appendChild(mainImg);
+.card {
+  background: rgba(15,23,42,.95);
+  border: 1px solid var(--border-soft);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,.4);
+}
 
-        const thumbs = document.createElement("div");
-        thumbs.className = "thumbs";
+.card-img {
+  height: 320px;
+  background: #08111f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-        product.images.forEach((src, idx) => {
-          const t = document.createElement("img");
-          t.src = src;
-          t.alt = product.name + " view " + (idx + 1);
-          if (idx === 0) t.classList.add("active");
-          t.addEventListener("click", () => {
-            mainImg.src = src;
-            Array.from(thumbs.children).forEach(c =>
-              c.classList.remove("active")
-            );
-            t.classList.add("active");
-          });
-          thumbs.appendChild(t);
-        });
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 
-        const header = document.createElement("div");
-        header.className = "card-header";
+.card-content {
+  padding: 14px;
+}
 
-        const title = document.createElement("div");
-        title.className = "card-title";
-        title.textContent = product.name;
+.thumbs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
 
-        const price = document.createElement("div");
-        price.className = "card-price";
-        price.textContent = formatPrice(product.price);
+.thumbs img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 2px solid transparent;
+}
 
-        header.appendChild(title);
-        header.appendChild(price);
+.thumbs img.active {
+  border-color: var(--accent);
+}
 
-        const meta = document.createElement("div");
-        meta.className = "card-meta";
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
 
-        const catPill = document.createElement("span");
-        catPill.className = "pill";
-        const cat = CATEGORIES.find(c => c.id === product.category);
-        catPill.textContent = cat ? cat.name : product.category;
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
 
-        meta.appendChild(catPill);
+.card-price {
+  color: var(--accent);
+  font-weight: bold;
+}
 
-        const desc = document.createElement("div");
-        desc.className = "card-desc";
-        desc.textContent = product.description;
+.pill {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  color: var(--text-muted);
+  font-size: .8rem;
+}
 
-        const footer = document.createElement("div");
-        footer.className = "card-footer";
+.card-desc {
+  margin-top: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
 
-        const orderBtn = document.createElement("button");
-        orderBtn.className = "order-btn";
-        orderBtn.type = "button";
-        orderBtn.textContent = "Order this print";
-        orderBtn.addEventListener("click", () => {
-          window.location.href = "/quote.html?product=" + encodeURIComponent(product.name);
-        });
+.card-footer {
+  margin-top: 14px;
+  text-align: right;
+}
 
-        footer.appendChild(orderBtn);
-
-        card.appendChild(imgWrapper);
-        card.appendChild(thumbs);
-        card.appendChild(header);
-        card.appendChild(meta);
-        card.appendChild(desc);
-        card.appendChild(footer);
-
-        gridEl.appendChild(card);
-      });
-    }
-
-    filterButtons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        filterButtons.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        activeFilter = btn.dataset.filter || "all";
-        renderProducts();
-      });
-    });
-
-    searchEl.addEventListener("input", () => {
-      searchQuery = searchEl.value || "";
-      renderProducts();
-    });
-
-    renderProducts();
-  </script>
-</body>
-</html>
+.order-btn {
+  background
