@@ -260,6 +260,21 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 .hours { display: grid; grid-template-columns: auto 1fr; gap: .25rem 1.25rem; margin: 0; }
 .hours dt { font-weight: 600; } .hours dd { margin: 0; white-space: nowrap; }
 
+.card-gallery {
+  display: flex;
+  gap: 6px;
+  margin: 8px 0;
+}
+
+.card-gallery .thumb {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+}
+
+
 /* ---------- Footer ---------- */
 .site-footer { background: var(--ink); color: #dbe3ea; margin-top: 0; }
 .site-footer a { color: #fff; }
