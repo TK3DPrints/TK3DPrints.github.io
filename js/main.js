@@ -101,9 +101,12 @@ function productCard(p) {
         class: 'thumb',
         loading: 'lazy',
         decoding: 'async'
-      })
-    )
-  );
+   const galleryWrapper = h('div', { class: 'card-gallery-wrapper' },
+  h('button', { class: 'arrow left', onclick: () => gallery.scrollBy({ left: -120, behavior: 'smooth' }) }, '‹'),
+  gallery,
+  h('button', { class: 'arrow right', onclick: () => gallery.scrollBy({ left: 120, behavior: 'smooth' }) }, '›')
+);
+
 
   return h('article', { class: 'card product-card' },
     h('a', { class: 'card-media', href: url, tabindex: '-1', 'aria-hidden': 'true' },
