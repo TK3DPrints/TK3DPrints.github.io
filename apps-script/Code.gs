@@ -13,7 +13,7 @@
  */
 
 // >>> Where the emails should go. Must be an address you can receive mail at.
-var RECIPIENT = "vomit1214@gmail.com";
+var RECIPIENT = "timothyknappwork@gmail.com";
 var BUSINESS_NAME = "TK 3D Prints";
 
 // ---- Safety limits (keep in sync with data/business.js) ----
