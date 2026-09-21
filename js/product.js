@@ -127,8 +127,6 @@ document.addEventListener('tk:ready', () => {
       h('p', { class: 'price price-large', text: money(p.price) }),
       h('p', { class: 'product-desc', text: p.description || '' }),
       form)));
-  syncWay();
-});
 
 // --- Image gallery + arrow controls for product page ---
 const galleryImages = [p.image, ...(p.extraImages || [])];
@@ -175,5 +173,9 @@ wrapper.appendChild(gallery);
 wrapper.appendChild(right);
 
 // Insert gallery under main image
-document.querySelector('.product-media').appendChild(wrapper);
+document.querySelector('.product-media').appendChild(wrapper);  
+  syncWay();
+});
+
+
 
