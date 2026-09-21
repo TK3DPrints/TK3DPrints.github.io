@@ -18,13 +18,6 @@ const PRODUCTS = [
       "images/radio-mount-3.jpg"
     ],
 
-     const galleryWrapper = h('div', { class: 'card-gallery-wrapper' },
-  h('button', { class: 'arrow left', onclick: () => gallery.scrollBy({ left: -120, behavior: 'smooth' }) }, '‹'),
-  gallery,
-  h('button', { class: 'arrow right', onclick: () => gallery.scrollBy({ left: 120, behavior: 'smooth' }) }, '›')
-);
-
-
     category: "Ford",
     availableColors: [],
     featured: true,
