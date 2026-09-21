@@ -274,6 +274,24 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
   border: 1px solid var(--line);
 }
 
+.card-gallery-wrapper {
+  position: relative;
+}
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--ink);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
+.arrow.left { left: 4px; }
+.arrow.right { right: 4px; }
+
 
 /* ---------- Footer ---------- */
 .site-footer { background: var(--ink); color: #dbe3ea; margin-top: 0; }
