@@ -76,9 +76,15 @@
           <fieldset class="group">
             <legend>Color and material</legend>
             <div class="grid-2">
-              <div class="field"><label for="q-color">Preferred color</label>
-                <input id="q-color" name="color" type="text" maxlength="60" list="color-suggestions" autocomplete="off" data-label="color">
-                <datalist id="color-suggestions"></datalist></div>
+              <div class="field">
+                <label for="q-color">Preferred color</label>
+                <div class="color-picker">
+                  <input id="q-color" name="color" type="color" value="#ffffff" data-label="color">
+                  <input id="q-color-name" name="color-name" type="text" maxlength="60" list="color-suggestions" placeholder="Color name (optional)" autocomplete="off">
+                  <datalist id="color-suggestions"></datalist>
+                </div>
+              </div>
+
               <div class="field"><label for="q-material">Preferred material</label>
                 <select id="q-material" name="material"></select></div>
             </div>
