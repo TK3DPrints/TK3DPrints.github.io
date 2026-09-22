@@ -16,7 +16,7 @@ const BUSINESS = {
   email: "tk3dprintsstore@gmail.com",  // Shown on the site and used for "Email us" links.
                                  // (Form messages are delivered by the Google Apps Script — see README.)
   phone: "",                     // Leave as "" to hide the phone number everywhere
-  location: "",  // Example: "Fort Wayne, Indiana"
+  location: "Edgerton, Ohio",  // Example: "Fort Wayne, Indiana"
   serviceArea: "Local pickup available. We ship anywhere in the US.",
 
   // ---- Business hours ---------------------------------------------------
