@@ -17,7 +17,7 @@ const BUSINESS = {
                                  // (Form messages are delivered by the Google Apps Script — see README.)
   phone: "",                     // Leave as "" to hide the phone number everywhere
   location: "Edgerton, Ohio",  // Example: "Fort Wayne, Indiana"
-  serviceArea: "Local pickup available in Edgerton, Ohio. We ship anywhere in the US.",
+  serviceArea: "Local pickup available. We ship anywhere in the US.",
 
   // ---- Business hours ---------------------------------------------------
   // Add or remove lines. Leave the list empty ( hours: [] ) to hide hours.
