@@ -12,17 +12,15 @@ document.addEventListener('tk:ready', () => {
   const toolbar = document.getElementById('toolbar');
 
   // Nothing to show at all
-if (categories.length <= 1) filters.hidden = true;
-
+  if (!products.length) {
     toolbar.hidden = true;
     empty.hidden = false;
     empty.textContent = 'No products are available right now. Check back soon, or request a custom print.';
     return;
   }
 
+  // Build category list
   const categories = ['All'].concat([...new Set(products.map(catOf))]);
-
-
 
   const params = new URLSearchParams(location.search);
   const state = { cat: categories.includes(params.get('cat')) ? params.get('cat') : 'All', q: '' };
@@ -32,7 +30,9 @@ if (categories.length <= 1) filters.hidden = true;
     onclick: () => { state.cat = cat; sync(); render(); }
   }));
   filters.append(...buttons);
-  if (categories.length <= 2) filters.hidden = true;     // one category → no need for filter buttons
+
+  // Show filter buttons even if only one category
+  if (categories.length <= 1) filters.hidden = false;
 
   function sync() {
     buttons.forEach((b, i) => b.setAttribute('aria-pressed', String(categories[i] === state.cat)));
