@@ -12,7 +12,8 @@ document.addEventListener('tk:ready', () => {
   const toolbar = document.getElementById('toolbar');
 
   // Nothing to show at all
-  if (!products.length) {
+if (categories.length <= 1) filters.hidden = true;
+
     toolbar.hidden = true;
     empty.hidden = false;
     empty.textContent = 'No products are available right now. Check back soon, or request a custom print.';
