@@ -47,13 +47,25 @@ const BUSINESS = {
   },
 
   // ---- Materials offered on the custom quote form ------------------------
-  materials: [
-    "Not sure — recommend one",
-    "PLA (standard, most colors)",
-    "PETG (tougher, water resistant)",
-    "ABS / ASA (heat and outdoor use)",
-    "TPU (flexible / rubbery)"
-  ],
+materials: [
+  "Not sure — recommend one",
+
+  // --- Filaments ---
+  "PLA (standard, most colors)",
+  "PLA+ (high-strength PLA)",
+  "ABS (impact-resistant, machinable)",
+  "ASA (UV and outdoor use)",
+  "PETG (tougher, water resistant)",
+  "TPU (flexible / rubbery)",
+  "Nylon (durable, wear-resistant)",
+  "PC (polycarbonate, high heat resistance)",
+  "Carbon Fiber PLA",
+  "Carbon Fiber PETG",
+  "Wood PLA",
+  "Silk PLA",
+  "Metal-filled PLA",
+],
+
 
   // ---- Colors shown as swatches on products -------------------------------
   // A color name used in products.js is matched here (not case sensitive).
