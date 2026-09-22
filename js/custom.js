@@ -56,7 +56,7 @@ document.addEventListener('tk:ready', () => {
     });
   }
 
-  // File pickers: we keep our own list so people can add files in several steps and remove any of them.
+  // File pickers
   const picks = {
     image: { input: form.elements.photos, list: document.getElementById('photo-list'), files: [] },
     model: { input: form.elements.models, list: document.getElementById('model-list'), files: [] }
@@ -129,64 +129,3 @@ document.addEventListener('tk:ready', () => {
       pick.input.value = '';
       renderList(kind);
       if (problems.length) Forms.setError(pick.input, problems.join(' '));
-    });
-  });
-
-  Forms.wire(form, {
-    type: 'quote',
-    subject: f => 'Custom quote request: ' + f['What would you like made?'],
-    getFiles: allFiles,
-    extraValidate: () => {
-      const issues = [];
-      const problem = Forms.totalProblem(allFiles());
-      if (problem) issues.push({ el: picks.image.input, message: problem });
-      return issues;
-    },
-   collect: () => {
-  const v = n => (form.elements.namedItem(n) ? form.elements.namedItem(n).value.trim() : '');
-
-  const dims = ['length', 'width', 'height'].map(n => v(n)).some(Boolean)
-    ? [v('length') || '?', v('width') || '?', v('height') || '?'].join(' × ') + ' ' + v('units') + ' (L × W × H)'
-    : '';
-
-  return {
-    'Name': v('name'),
-    'Email': v('email'),
-    'What would you like made?': v('title'),
-    'Description': v('description'),
-    'Dimensions': dims,
-    'Quantity': v('quantity'),
-    'Preferred color': v('color-name'),
-    'Preferred material': v('material'),
-    'Additional notes': v('notes'),
-    'Attached files': allFiles().map(f => f.name).join(', ')
-  };
-},
-
-    onSuccess: f => {
-      form.replaceWith(
-        h(
-          'div',
-          { class: 'success', id: 'quote-success', role: 'status' },
-          h('h2', { text: 'Request received' }),
-          h('p', {
-            text:
-              'Thanks, ' +
-              f['Name'] +
-              '. We will review your request and email ' +
-              f['Email'] +
-              ' with questions or a quote. Submitting this form does not guarantee a price.'
-          }),
-          h('a', {
-            class: 'btn btn-ghost',
-            href: 'index.html',
-            text: 'Back to home'
-          })
-        )
-      );
-      document
-        .getElementById('quote-success')
-        .scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-  });
-});
