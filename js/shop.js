@@ -19,7 +19,8 @@ document.addEventListener('tk:ready', () => {
     return;
   }
 
-  const categories = ['All', 'Ford', ...new Set(products.map(catOf)).filter(c => c !== 'Ford')];
+  const categories = ['All'].concat([...new Set(products.map(catOf))]);
+
 
   const params = new URLSearchParams(location.search);
   const state = { cat: categories.includes(params.get('cat')) ? params.get('cat') : 'All', q: '' };
