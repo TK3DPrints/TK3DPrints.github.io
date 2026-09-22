@@ -23,21 +23,40 @@ document.addEventListener('tk:ready', () => {
   const categories = ['All'].concat([...new Set(products.map(catOf))]);
 
   const params = new URLSearchParams(location.search);
-  const state = { cat: categories.includes(params.get('cat')) ? params.get('cat') : 'All', q: '' };
+  const state = {
+    cat: categories.includes(params.get('cat')) ? params.get('cat') : 'All',
+    q: ''
+  };
 
-  const buttons = categories.map(cat => h('button', {
-    type: 'button', class: 'pill', text: cat,
-    onclick: () => { state.cat = cat; sync(); render(); }
-  }));
+  const buttons = categories.map(cat =>
+    h('button', {
+      type: 'button',
+      class: 'pill',
+      text: cat,
+      onclick: () => {
+        state.cat = cat;
+        sync();
+        render();
+      }
+    })
+  );
   filters.append(...buttons);
 
-  // Show filter buttons even if only one category
-  if (categories.length <= 1) filters.hidden = false;
+  // Always show filter buttons (even if only one category)
+  if (categories.length <= 1) {
+    filters.hidden = false;
+  }
 
   function sync() {
-    buttons.forEach((b, i) => b.setAttribute('aria-pressed', String(categories[i] === state.cat)));
+    buttons.forEach((b, i) =>
+      b.setAttribute('aria-pressed', String(categories[i] === state.cat))
+    );
     const url = new URL(location.href);
-    if (state.cat === 'All') url.searchParams.delete('cat'); else url.searchParams.set('cat', state.cat);
+    if (state.cat === 'All') {
+      url.searchParams.delete('cat');
+    } else {
+      url.searchParams.set('cat', state.cat);
+    }
     history.replaceState(null, '', url);
   }
 
@@ -45,19 +64,43 @@ document.addEventListener('tk:ready', () => {
     const q = state.q.trim().toLowerCase();
     const shown = products.filter(p =>
       (state.cat === 'All' || catOf(p) === state.cat) &&
-      (!q || [p.name, p.description, p.category].join(' ').toLowerCase().includes(q)));
+      (!q ||
+        [p.name, p.description, p.category]
+          .join(' ')
+          .toLowerCase()
+          .includes(q))
+    );
 
     grid.replaceChildren(...shown.map(productCard));
     empty.hidden = shown.length > 0;
+
     if (!shown.length) {
       empty.replaceChildren(
         h('p', { text: 'No products match that. ' }),
-        h('button', { type: 'button', class: 'btn btn-ghost', text: 'Show all products',
-          onclick: () => { state.cat = 'All'; state.q = ''; search.value = ''; sync(); render(); } }));
+        h('button', {
+          type: 'button',
+          class: 'btn btn-ghost',
+          text: 'Show all products',
+          onclick: () => {
+            state.cat = 'All';
+            state.q = '';
+            search.value = '';
+            sync();
+            render();
+          }
+        })
+      );
     }
-    count.textContent = shown.length + (shown.length === 1 ? ' product' : ' products');
+
+    count.textContent =
+      shown.length + (shown.length === 1 ? ' product' : ' products');
   }
 
-  search.addEventListener('input', () => { state.q = search.value; render(); });
-  sync(); render();
+  search.addEventListener('input', () => {
+    state.q = search.value;
+    render();
+  });
+
+  sync();
+  render();
 });
