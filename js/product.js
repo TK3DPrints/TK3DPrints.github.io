@@ -119,6 +119,7 @@ document.addEventListener('tk:ready', () => {
     }
   });
 
+  /* --- Build product layout --- */
   root.replaceChildren(h('div', { class: 'product-layout' },
     h('div', { class: 'product-media' }, productImage(p, { loading: 'eager', fetchpriority: 'high' })),
     h('div', { class: 'product-info' },
@@ -128,54 +129,47 @@ document.addEventListener('tk:ready', () => {
       h('p', { class: 'product-desc', text: p.description || '' }),
       form)));
 
-// --- Image gallery + arrow controls for product page ---
-const galleryImages = [p.image, ...(p.extraImages || [])];
-let currentIndex = 0;
+  /* --- Image gallery + arrow controls --- */
+  const galleryImages = [p.image, ...(p.extraImages || [])];
+  let currentIndex = 0;
 
-// Main image element
-const mainImg = document.querySelector('.product-media img');
+  const mainImg = document.querySelector('.product-media img');
 
-// Function to update main image
-const showImage = (index) => {
-  currentIndex = (index + galleryImages.length) % galleryImages.length;
-  mainImg.src = galleryImages[currentIndex];
-};
+  const showImage = (index) => {
+    currentIndex = (index + galleryImages.length) % galleryImages.length;
+    mainImg.src = galleryImages[currentIndex];
+  };
 
-// Build thumbnail gallery
-const gallery = document.createElement('div');
-gallery.className = 'card-gallery';
+  const gallery = document.createElement('div');
+  gallery.className = 'card-gallery';
 
-galleryImages.forEach((src, i) => {
-  const thumb = document.createElement('img');
-  thumb.src = src;
-  thumb.className = 'thumb';
-  thumb.alt = p.name;
-  thumb.onclick = () => showImage(i);
-  gallery.appendChild(thumb);
-});
+  galleryImages.forEach((src, i) => {
+    const thumb = document.createElement('img');
+    thumb.src = src;
+    thumb.className = 'thumb';
+    thumb.alt = p.name;
+    thumb.onclick = () => showImage(i);
+    gallery.appendChild(thumb);
+  });
 
-// Build arrow wrapper
-const wrapper = document.createElement('div');
-wrapper.className = 'card-gallery-wrapper';
+  const wrapper = document.createElement('div');
+  wrapper.className = 'card-gallery-wrapper';
 
-const left = document.createElement('button');
-left.className = 'arrow left';
-left.textContent = '‹';
-left.onclick = () => showImage(currentIndex - 1);
+  const left = document.createElement('button');
+  left.className = 'arrow left';
+  left.textContent = '‹';
+  left.onclick = () => showImage(currentIndex - 1);
 
-const right = document.createElement('button');
-right.className = 'arrow right';
-right.textContent = '›';
-right.onclick = () => showImage(currentIndex + 1);
+  const right = document.createElement('button');
+  right.className = 'arrow right';
+  right.textContent = '›';
+  right.onclick = () => showImage(currentIndex + 1);
 
-wrapper.appendChild(left);
-wrapper.appendChild(gallery);
-wrapper.appendChild(right);
+  wrapper.appendChild(left);
+  wrapper.appendChild(gallery);
+  wrapper.appendChild(right);
 
-// Insert gallery under main image
-document.querySelector('.product-media').appendChild(wrapper);  
+  document.querySelector('.product-media').appendChild(wrapper);
+
   syncWay();
 });
-
-
-
