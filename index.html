@@ -30,22 +30,17 @@
           </div>
         </div>
         <div class="hero-visual">
-  <div class="product-media">
-    <img src="images/ford-radio-mount.jpg" alt="Under‑Dash Single DIN Radio Mount">
-  </div>
-
-  <div class="card-gallery-wrapper">
-    <button class="arrow left">‹</button>
-    <div class="card-gallery"></div>
-    <button class="arrow right">›</button>
-  </div>
-</div>
-
+          <div class="product-media">
+            <img src="images/ford-radio-mount.jpg" alt="Under‑Dash Single DIN Radio Mount">
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="strip">
-      <div class="wrap"><ul class="highlights" id="highlights"></ul></div>
+      <div class="wrap">
+        <ul class="highlights" id="highlights"></ul>
+      </div>
     </section>
 
     <section class="section">
@@ -84,47 +79,12 @@
       </div>
     </section>
   </main>
+
   <div id="site-footer"></div>
   <script src="data/business.js"></script>
   <script src="data/content.js"></script>
   <script src="data/products.js"></script>
   <script src="js/main.js"></script>
   <script src="js/home.js"></script>
-
-  <script>
-document.addEventListener('tk:ready', () => {
-  const galleryImages = [
-    'images/ford-radio-mount.jpg',
-    'images/ford-radio-mount-side.jpg',
-    'images/ford-radio-mount-installed.jpg'
-  ];
-
-  let currentIndex = 0;
-  const mainImg = document.querySelector('.hero-visual .product-media img');
-
-  const showImage = (index) => {
-    currentIndex = (index + galleryImages.length) % galleryImages.length;
-    mainImg.src = galleryImages[currentIndex];
-  };
-
-  const gallery = document.querySelector('.hero-visual .card-gallery');
-  galleryImages.forEach((src, i) => {
-    const thumb = document.createElement('img');
-    thumb.src = src;
-    thumb.className = 'thumb';
-    thumb.alt = 'Under‑Dash Single DIN Radio Mount';
-    thumb.onclick = () => showImage(i);
-    gallery.appendChild(thumb);
-  });
-
-  document.querySelector('.hero-visual .arrow.left').onclick = () =>
-    showImage(currentIndex - 1);
-
-  document.querySelector('.hero-visual .arrow.right').onclick = () =>
-    showImage(currentIndex + 1);
-});
-</script>
-
-  
 </body>
 </html>
