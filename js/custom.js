@@ -142,29 +142,27 @@ document.addEventListener('tk:ready', () => {
       if (problem) issues.push({ el: picks.image.input, message: problem });
       return issues;
     },
-    collect: () => {
-      const v = n => form.elements.namedItem(n).value.trim();
-      const dims = ['length', 'width', 'height'].map(n => v(n)).some(Boolean)
-        ? [v('length') || '?', v('width') || '?', v('height') || '?'].join(' × ') +
-          ' ' +
-          v('units') +
-          ' (L × W × H)'
-        : '';
-      return {
-        'Name': v('name'),
-        'Email': v('email'),
-        'What would you like made?': v('title'),
-        'Description': v('description'),
-        'Dimensions': dims,
-        'Quantity': v('quantity'),
-        'Preferred color': v('color-name') || v('color'),
-        'Preferred material': v('material'),
-        'Additional notes': v('notes'),
-        'Attached files': allFiles()
-          .map(f => f.name)
-          .join(', ')
-      };
-    },
+   collect: () => {
+  const v = n => (form.elements.namedItem(n) ? form.elements.namedItem(n).value.trim() : '');
+
+  const dims = ['length', 'width', 'height'].map(n => v(n)).some(Boolean)
+    ? [v('length') || '?', v('width') || '?', v('height') || '?'].join(' × ') + ' ' + v('units') + ' (L × W × H)'
+    : '';
+
+  return {
+    'Name': v('name'),
+    'Email': v('email'),
+    'What would you like made?': v('title'),
+    'Description': v('description'),
+    'Dimensions': dims,
+    'Quantity': v('quantity'),
+    'Preferred color': v('color-name'),
+    'Preferred material': v('material'),
+    'Additional notes': v('notes'),
+    'Attached files': allFiles().map(f => f.name).join(', ')
+  };
+},
+
     onSuccess: f => {
       form.replaceWith(
         h(
