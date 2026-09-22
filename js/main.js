@@ -186,15 +186,15 @@ function productCard(p) {
   }
 
   function logoMark() {
-    const s = svgEl('svg', { viewBox: '0 0 64 64', width: 34, height: 34, 'aria-hidden': 'true', class: 'logo-mark' });
-    s.append(
-      svgEl('rect', { width: 64, height: 64, rx: 14, fill: '#111c27' }),
-      svgEl('rect', { x: 14, y: 16, width: 36, height: 8, rx: 3, fill: '#ffc21a' }),
-      svgEl('rect', { x: 14, y: 28, width: 36, height: 8, rx: 3, fill: '#4d7cff' }),
-      svgEl('rect', { x: 14, y: 40, width: 36, height: 8, rx: 3, fill: '#ffffff' })
-    );
-    return s;
-  }
+  return h('img', {
+    src: 'images/logo.jpg',
+    alt: BUSINESS.name + ' logo',
+    width: 48,
+    height: 48,
+    class: 'logo-mark'
+  });
+}
+
 
   function buildHeader() {
     const mount = document.getElementById('site-header');
