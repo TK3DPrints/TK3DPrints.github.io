@@ -22,6 +22,7 @@ document.addEventListener('tk:ready', () => {
   const categories = ['All'].concat([...new Set(products.map(catOf))]);
 
 
+
   const params = new URLSearchParams(location.search);
   const state = { cat: categories.includes(params.get('cat')) ? params.get('cat') : 'All', q: '' };
 
