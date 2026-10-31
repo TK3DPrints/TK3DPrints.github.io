@@ -33,7 +33,7 @@ const PRODUCTS = [
 
     extraImages: [
       "images/TreeBottomView.jpg"
-      "images/TreeMeasurement.jpg"
+      "images/TreeMeasurement.png"
     ],
 
     category: "Holiday Decor",
