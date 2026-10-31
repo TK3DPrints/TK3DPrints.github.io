@@ -24,9 +24,10 @@ const PRODUCTS = [
 
   {
     id: "decorative-tree",
-    name: "Decorative Tree",
+    name: "PVC Mega Tree Light Topper",
     price: 19.99,
-    description: "3D printed decorative tree.",
+
+    description: "Create a professional-looking holiday light tree with this durable 3D printed topper. Designed to mount on a PVC center pole, the topper provides evenly spaced attachment points for light strands. Run lights from the upper tabs down to ground stakes to quickly create the iconic cone-shaped silhouette of a Christmas tree made entirely from lights. Ideal for DIY holiday displays, mega trees, and seasonal outdoor decorations.",
 
     image: "images/TreeTopview.jpg",
 
@@ -34,7 +35,7 @@ const PRODUCTS = [
       "images/TreeBottomView.jpg"
     ],
 
-    category: "Decor",
+    category: "Holiday Decor",
     availableColors: [],
     featured: true,
     active: true
