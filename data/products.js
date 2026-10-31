@@ -1,3 +1,7 @@
+/* ==========================================================================
+   PRODUCTS  —  every ready-made item in the shop lives in this one list.
+   ========================================================================== */
+
 const PRODUCTS = [
   {
     id: "ford-radio-mount",
