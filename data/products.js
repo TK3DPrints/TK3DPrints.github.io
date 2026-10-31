@@ -32,7 +32,7 @@ const PRODUCTS = [
     image: "images/TreeTopview.jpg",
 
     extraImages: [
-      "images/TreeBottomView.jpg"
+      "images/TreeBottomView.jpg",
       "images/TreeMeasurement.png"
     ],
 
