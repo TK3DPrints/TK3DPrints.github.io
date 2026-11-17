@@ -47,7 +47,7 @@ const PRODUCTS = [
     name: "RC stand",
     price: 15.00,
 
-    description: "Durable 3D printed display stand designed to showcase RC cars and trucks. Provides a stable platform for storage, display, maintenance, and photography while keeping tires off the surface and preventing flat spots.",
+    description: "Durable 3D printed display stand designed to showcase RC cars and trucks. Provides a stable platform for storage, display, maintenance, and photography while keeping tires off the surface and preventing flat spots. Comes as a set",
 
     image: "images/RCstand.jpg",
 
